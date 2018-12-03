@@ -15,7 +15,7 @@ interface BebidinhasService {
     fun getBebidinhasAcoolicas(): Call<ListaBebidinhas>
 
     //drink aleatório
-    @GET("random.php$API_CHAVE")
+    @GET("random.php&$API_CHAVE")
     fun getRandBebidinha(): Call<ListaBebidinhas>
 
 }
