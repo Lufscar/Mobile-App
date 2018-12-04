@@ -34,7 +34,7 @@ class MainList_Activity : AppCompatActivity() , MainContract.View{
     override fun showList(bebidinhas: List<Bebidinha>){
 
         //lista
-        val adapter = BebidinhaAdapter(bebidinhas)
+        val adapter = BebidinhaAdapter(this, bebidinhas)
         val layoutManager = LinearLayoutManager(this)
         val dividerItemDecoration = DividerItemDecoration(this, layoutManager.orientation)
 

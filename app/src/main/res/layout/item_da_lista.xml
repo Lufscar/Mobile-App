@@ -6,6 +6,7 @@ android:layout_height="64dp">
 
 
     <ImageView
+        android:id="@+id/ivImagem"
         android:layout_width="100dp"
         android:layout_height="64dp"
         android:background="#ffbdbdbd"/>
