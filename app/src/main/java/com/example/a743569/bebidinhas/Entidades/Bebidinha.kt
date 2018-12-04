@@ -1,8 +1,5 @@
 package com.example.a743569.bebidinhas.Entidades
 
-/**
- * Created by 743569 on 03/12/18.
- */
 data class Bebidinha (val idDrink: Int,
                       val strDrink: String,
                       val strDrinkThumb: String,

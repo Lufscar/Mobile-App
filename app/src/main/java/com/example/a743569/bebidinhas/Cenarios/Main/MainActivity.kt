@@ -4,34 +4,52 @@ import android.content.Intent
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
+import android.widget.ProgressBar
 import android.widget.Toast
 import com.example.a743569.bebidinhas.Entidades.Bebidinha
 import com.example.a743569.bebidinhas.R
+import com.example.a743569.bebidinhas.R.id.pbLoading
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() , MainContract.View {
-
+class MainActivity : AppCompatActivity() , MainContract.View{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val presenter : MainContract.Presenter = MainPresenter( this)
+        presenter.onLoadBebidas()
     }
 
-    val presenter : MainContract.Presenter = MainPresenter(view: this)
-    presenter.onLoadBebidas()
 
     override fun showMessage(msg: String) {
-        Toast.makeText(context: this, msg, Toast.LENGTH_LONG).show()
+        Toast.makeText( this, msg, Toast.LENGTH_LONG).show()
     }
 
     override fun showList(bebidinhas: List<Bebidinha>){
-        val adapter = BebidinhaAdapter(this, bebidinhas)
-        adapter.setOnItemClickListener {position ->
+        val adapter = BebidinhaAdapter(bebidinhas)
+        val layoutManager = LinearLayoutManager(this)
+
+        rvBebidas.adapter = adapter
+        rvBebidas.layoutManager = GridLayoutManager(this, 4)
+
+        /*adapter.setOnItemClickListener {position ->
         val openBrowser = Intent(Intent.ACTION_VIEW)
         openBrowser.data = Uri.parse(bebidinhas.get(position).url)
         startActivity(openBrowser)
+        }*/
 
-        TODO("CRIAR ADAPTER (BebidinhaAdapter) - GLIDE")
-        }
+        Toast.makeText(this, "Bebidinhas Recebidas", Toast.LENGTH_LONG).show()
+    }
+
+    override fun showLoading() {
+        pbLoading.visibility = ProgressBar.VISIBLE
+    }
+
+    override fun hideLoading() {
+        pbLoading.visibility = ProgressBar.INVISIBLE
     }
 
 }
