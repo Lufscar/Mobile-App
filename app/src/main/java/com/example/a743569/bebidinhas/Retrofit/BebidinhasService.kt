@@ -4,7 +4,7 @@ import retrofit2.Call
 import com.example.a743569.bebidinhas.Entidades.ListaBebidinhas
 import retrofit2.http.GET
 
-
+//facilita a chamada a API
 interface BebidinhasService {
     companion object {
         private const val API_CHAVE = "apiKey=1"
@@ -17,5 +17,9 @@ interface BebidinhasService {
     //drink aleatório
     @GET("random.php?$API_CHAVE")
     fun getRandBebidinha(): Call<ListaBebidinhas>
+
+    //drink por id
+    @GET("lookup.php?$API_CHAVE")
+    fun getIDbebidinha(): Call<ListaBebidinhas>
 
 }

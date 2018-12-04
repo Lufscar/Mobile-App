@@ -30,14 +30,17 @@ class MainList_Activity : AppCompatActivity() , MainContract.View{
         Toast.makeText( this, msg, Toast.LENGTH_LONG).show()
     }
 
+    //mostra a lista na tela
     override fun showList(bebidinhas: List<Bebidinha>){
 
+        //lista
         val adapter = BebidinhaAdapter(bebidinhas)
-        val layoutManager = LinearLayoutManager
+        val layoutManager = LinearLayoutManager(this)
         val dividerItemDecoration = DividerItemDecoration(this, layoutManager.orientation)
 
+        //recyclerview
         rvBebidas.adapter = adapter
-        rvBebidas.layoutManager = GridLayoutManager(this, 4)
+        rvBebidas.layoutManager =LinearLayoutManager(this)
         rvBebidas.addItemDecoration(dividerItemDecoration)
 
         /*adapter.setOnItemClickListener {position ->

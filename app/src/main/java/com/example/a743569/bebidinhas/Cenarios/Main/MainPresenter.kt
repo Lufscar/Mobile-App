@@ -13,7 +13,7 @@ class MainPresenter (val view: MainContract.View) : MainContract.Presenter{
 
         view.showLoading()
 
-        val bebidinhasService = RetrofitInicializer().createBebidinhasService()
+        val bebidinhasService = RetrofitInicializer().createBebidinhasService() //inicia o retrofit
 
         val call = bebidinhasService.getBebidinhasAlcoolicas()//forma assincrona
 
@@ -26,7 +26,7 @@ class MainPresenter (val view: MainContract.View) : MainContract.Presenter{
             override fun onResponse(call: Call<ListaBebidinhas>?, response: Response<ListaBebidinhas>?) {   //se não falhar
                 view.hideLoading()
                 if (response?.body() != null){                                                               //se a url retornar algum dado
-                    view.showList(response.body()!!.drinks)                                             //mostra a lista bebidinhas
+                    view.showList(response.body()!!.drinks)                                            //mostra a lista bebidinhas
                 }else{                                                                                 //se não retornar nenhum dado
                     view.showMessage("Não há bebidinhas na sua lista :(")                              //exibe mensagem
                 }
