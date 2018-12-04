@@ -1,12 +1,12 @@
 package com.example.a743569.bebidinhas.Cenarios.Main
 
-import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import com.example.a743569.bebidinhas.Entidades.Bebidinha
 import com.example.a743569.bebidinhas.R
+import kotlinx.android.synthetic.main.item_da_lista.view.*
 
 class BebidinhaAdapter(val bebidinhas: List<Bebidinha>)
     : RecyclerView.Adapter<BebidinhaAdapter.ViewHolder>() {
@@ -26,7 +26,9 @@ class BebidinhaAdapter(val bebidinhas: List<Bebidinha>)
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bindView(contatinhoNome: Bebidinha) {
+        fun bindView(bebidinhaNome: Bebidinha) {
+            itemView.tvNome.text = bebidinhaNome.strDrink
+            itemView.
         }
 
     }

@@ -10,6 +10,6 @@ class RetrofitInicializer{
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-        fun createBebidinhasService() = retrofit.create(BebidinhasService::class.java)
+        fun createBebidinhasService():BebidinhasService = retrofit.create(BebidinhasService::class.java)
 
 }

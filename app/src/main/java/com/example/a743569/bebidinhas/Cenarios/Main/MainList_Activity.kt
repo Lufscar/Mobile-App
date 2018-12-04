@@ -4,8 +4,10 @@ import android.content.Intent
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.StaggeredGridLayoutManager
 import android.widget.ProgressBar
 import android.widget.Toast
 import com.example.a743569.bebidinhas.Entidades.Bebidinha
@@ -13,7 +15,7 @@ import com.example.a743569.bebidinhas.R
 import com.example.a743569.bebidinhas.R.id.pbLoading
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() , MainContract.View{
+class MainList_Activity : AppCompatActivity() , MainContract.View{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,11 +31,14 @@ class MainActivity : AppCompatActivity() , MainContract.View{
     }
 
     override fun showList(bebidinhas: List<Bebidinha>){
+
         val adapter = BebidinhaAdapter(bebidinhas)
-        val layoutManager = LinearLayoutManager(this)
+        val layoutManager = LinearLayoutManager
+        val dividerItemDecoration = DividerItemDecoration(this, layoutManager.orientation)
 
         rvBebidas.adapter = adapter
         rvBebidas.layoutManager = GridLayoutManager(this, 4)
+        rvBebidas.addItemDecoration(dividerItemDecoration)
 
         /*adapter.setOnItemClickListener {position ->
         val openBrowser = Intent(Intent.ACTION_VIEW)
