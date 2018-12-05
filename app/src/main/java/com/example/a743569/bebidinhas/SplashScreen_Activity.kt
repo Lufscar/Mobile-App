@@ -23,6 +23,6 @@ class SplashScreen_Activity : AppCompatActivity() {
             val telaPrincipal = Intent(this, MainList_Activity::class.java)
             startActivity(telaPrincipal)
             finish()
-        }, 2000)
+        }, 4000)
     }
 }

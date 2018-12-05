@@ -5,6 +5,6 @@
     <string name="tv_idDetalhe">id_id</string>
     <string name="tv_categoriaDetalhe">Categoria</string>
     <string name="tv_Ingredientes">Ingredientes</string>
-    <string name="tv_InstructionsDetalhes">Instruções</string>
+    <string name="tv_InstructionsDetalhes">Instructions</string>
 
 </resources>

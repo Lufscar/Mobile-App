@@ -42,11 +42,7 @@ class MainList_Activity : AppCompatActivity() , MainContract.View{
         rvBebidas.layoutManager =LinearLayoutManager(this)
         rvBebidas.addItemDecoration(dividerItemDecoration)
 
-        /*adapter.setOnItemClickListener {position ->
-        val openBrowser = Intent(Intent.ACTION_VIEW)
-        openBrowser.data = Uri.parse(bebidinhas.get(position).url)
-        startActivity(openBrowser)
-        }*/
+        //clique para os detalhes
         adapter.setOnItenClickListener {indexItemClicado ->
             val editaItem = Intent(this, Detalhes_Activity::class.java)
             editaItem.putExtra(Detalhes_Activity.BEBIDINHA, bebidinhas[indexItemClicado])
@@ -54,7 +50,7 @@ class MainList_Activity : AppCompatActivity() , MainContract.View{
         }
 
 
-        Toast.makeText(this, "Bebidinhas Recebidas", Toast.LENGTH_LONG).show()
+        //Toast.makeText(this, "Bebidinhas Recebidas", Toast.LENGTH_LONG).show()
     }
 
     override fun showLoading() {
