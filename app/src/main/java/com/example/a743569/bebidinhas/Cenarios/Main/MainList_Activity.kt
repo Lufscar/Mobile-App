@@ -1,18 +1,15 @@
 package com.example.a743569.bebidinhas.Cenarios.Main
 
 import android.content.Intent
-import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.StaggeredGridLayoutManager
 import android.widget.ProgressBar
 import android.widget.Toast
+import com.example.a743569.bebidinhas.Cenarios.Detalhes.Detalhes_Activity
 import com.example.a743569.bebidinhas.Entidades.Bebidinha
 import com.example.a743569.bebidinhas.R
-import com.example.a743569.bebidinhas.R.id.pbLoading
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainList_Activity : AppCompatActivity() , MainContract.View{
@@ -48,6 +45,12 @@ class MainList_Activity : AppCompatActivity() , MainContract.View{
         openBrowser.data = Uri.parse(bebidinhas.get(position).url)
         startActivity(openBrowser)
         }*/
+        adapter.setOnItenClickListener {indexItemClicado ->
+            val editaItem = Intent(this, Detalhes_Activity::class.java)
+            editaItem.putExtra(Detalhes_Activity.BEBIDINHA, bebidinhas[indexItemClicado])
+            startActivity(editaItem)
+        }
+
 
         Toast.makeText(this, "Bebidinhas Recebidas", Toast.LENGTH_LONG).show()
     }
