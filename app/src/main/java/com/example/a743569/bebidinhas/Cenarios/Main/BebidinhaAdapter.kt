@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.view.LayoutInflater
-import com.example.a743569.bebidinhas.Cenarios.Detalhes.Detalhes_Activity.Companion.bebidinha
 import com.example.a743569.bebidinhas.Entidades.Bebidinha
 import com.example.a743569.bebidinhas.Glide.GlideApp
 import com.example.a743569.bebidinhas.R
@@ -34,23 +33,23 @@ class BebidinhaAdapter(val context: Context, val bebidinhas: List<Bebidinha>)
 
     //chama a fun para relacionar os dados do item à view do item
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindView(context, bebidinhas[position], clickListener)
+        holder.bindView(context, bebidinhas[position], position, clickListener)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         //relaciona todos os dados do item à view do item
-        fun bindView(context: Context, bebidinhaNome: Bebidinha, clickListener: ((id: Int) -> Unit)?) {
-            itemView.tvNome.text = bebidinhaNome.strDrink //recebe o nome do drink
+        fun bindView(context: Context, bebidinha: Bebidinha, position: Int, clickListener: ((id: Int) -> Unit)?) {
+            itemView.tvNome.text = bebidinha.strDrink //recebe o nome do drink
 
             GlideApp.with(context)
-                    .load(bebidinhaNome.strDrinkThumb)//recebe a url da imagem
+                    .load(bebidinha.strDrinkThumb)//recebe a url da imagem
                     .centerCrop()//faz a imagem ocupar o espaço destinado
                     .into(itemView.ivImagem)//relaciona ao id na
 
             if (clickListener != null) {
                 itemView.setOnClickListener {
-                    clickListener.invoke(bebidinha!!.idDrink)
+                        clickListener.invoke(position)
                 }
             }
         }

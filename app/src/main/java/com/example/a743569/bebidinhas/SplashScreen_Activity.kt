@@ -18,11 +18,11 @@ class SplashScreen_Activity : AppCompatActivity() {
                 .load("https://cdn.dribbble.com/users/35243/screenshots/2663562/drink.gif")
                 .centerCrop()
                 .placeholder(R.drawable.drink)
-                .into(ivImagemSplash)
+               // .into(ivImagemSplash)
         Handler().postDelayed({
             val telaPrincipal = Intent(this, MainList_Activity::class.java)
             startActivity(telaPrincipal)
             finish()
-        }, 3000)
+        }, 2000)
     }
 }

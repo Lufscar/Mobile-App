@@ -8,6 +8,14 @@ android:layout_height="match_parent">
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pbloadingDetalhes"
+        android:visibility="gone"
+        android:layout_gravity="center" />
+
     <ImageView
         android:id="@+id/ivImagemDetalhe"
         android:layout_width="match_parent"
@@ -47,15 +55,8 @@ android:layout_height="match_parent">
             android:layout_height="1dp"
             android:background="#232F34"
             android:layout_marginVertical="24dp"/>
-        <TextView
-            android:text="@string/tv_Ingredientes"
-            android:id="@+id/tv_Ingredientes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            android:textColor="#232F34"
-            android:layout_marginBottom="14dp"/>
+
+
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"

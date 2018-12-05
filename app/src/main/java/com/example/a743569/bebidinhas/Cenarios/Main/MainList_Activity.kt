@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ProgressBar
 import android.widget.Toast
 import com.example.a743569.bebidinhas.Cenarios.Detalhes.Detalhes_Activity
@@ -19,7 +21,7 @@ class MainList_Activity : AppCompatActivity() , MainContract.View{
         setContentView(R.layout.activity_main)
 
         val presenter : MainContract.Presenter = MainPresenter( this)
-        presenter.onLoadBebidas()
+        presenter.onLoadBebidas(this)
     }
 
 
@@ -61,6 +63,28 @@ class MainList_Activity : AppCompatActivity() , MainContract.View{
 
     override fun hideLoading() {
         pbLoading.visibility = ProgressBar.INVISIBLE
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_random -> {
+                val presenter : MainContract.Presenter = MainPresenter( this)
+                presenter.onLoadRandom()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun showDetails(bebidinha: Bebidinha) {
+        val editaItem = Intent(this, Detalhes_Activity::class.java)
+        editaItem.putExtra(Detalhes_Activity.BEBIDINHA, bebidinha)
+        startActivity(editaItem)
     }
 
 }

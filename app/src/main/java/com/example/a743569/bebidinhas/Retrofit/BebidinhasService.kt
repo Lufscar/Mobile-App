@@ -3,6 +3,7 @@ package com.example.a743569.bebidinhas.Retrofit
 import retrofit2.Call
 import com.example.a743569.bebidinhas.Entidades.ListaBebidinhas
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 //facilita a chamada a API
 interface BebidinhasService {
@@ -20,6 +21,6 @@ interface BebidinhasService {
 
     //drink por id
     @GET("lookup.php?$API_CHAVE")
-    fun getIDbebidinha(): Call<ListaBebidinhas>
+    fun getIDbebidinha(@Query("i") id : String): Call<ListaBebidinhas>
 
 }
